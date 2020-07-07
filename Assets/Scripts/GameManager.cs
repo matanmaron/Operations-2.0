@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // ReSharper disable once MemberCanBePrivate.Global
+    [SerializeField] UIManager uiManager = null;
+    internal List<Reshuma> reshumas = null;
+
     public static GameManager Instance { get; private set; } //singleton
     private void Awake()
     {
@@ -17,5 +19,17 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        reshumas = new List<Reshuma>();
+    }
+
+    public void AddNewReshuma()
+    {
+        var row = new Reshuma();
+        reshumas.Add(row);
+        uiManager.AddNewReshuma(row);
     }
 }

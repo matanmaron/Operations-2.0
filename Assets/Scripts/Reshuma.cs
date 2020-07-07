@@ -1,14 +1,13 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 public class Reshuma
 {
-    public string Company;
-    public string Zone;
+    public Guid ReshumaGuid;
+    public string CompanyName;
+    public string CompanyField;
     public string PhoneNumber;
+    public DateTime StartDate;
     public DateTime EndDate;
-    public int ReshumaId;
-    public Dictionary<int, List<Call>> Calls;
-
+    public List<Call> Calls;
 }

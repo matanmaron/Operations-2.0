@@ -3,12 +3,11 @@ using System;
 
 public class Call
 {
-    public double CallID;
+    public Guid CallGuid;
     public string Representative;
-    public string Contents;
-    private int CallDateint;
+    public string CallContents;
     public DateTime CallDate;
     public string Remarks;
-    private int CallEndint;
-    public DateTime CallEnd;
+    public DateTime ContractStartDate;
+    public DateTime ContractEndDate;
 }
