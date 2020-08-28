@@ -1,35 +1,32 @@
-﻿using System.Collections;
+﻿using Operations;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+namespace Managers
 {
-    [SerializeField] UIManager uiManager = null;
-    internal List<Reshuma> reshumas = null;
-
-    public static GameManager Instance { get; private set; } //singleton
-    private void Awake()
+    public class GameManager : MonoBehaviour
     {
-        if (Instance == null)
+        [SerializeField] UIManager uiManager = null;
+        [SerializeField] AudioManager audioManager = null;
+        internal Settings settings = null;
+        internal Data data = null;
+        public static GameManager Instance { get; private set; } //singleton
+        private void Awake()
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
+            if (Instance != null && Instance != this)
+            {
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                Instance = this;
+            }
         }
-        else
+        private void Start()
         {
-            Destroy(gameObject);
+            settings = SettingsManager.GetSettings();
+            data = DataManager.GetData();
         }
-    }
-
-    private void Start()
-    {
-        reshumas = new List<Reshuma>();
-    }
-
-    public void AddNewReshuma()
-    {
-        var row = new Reshuma();
-        reshumas.Add(row);
-        uiManager.AddNewReshuma(row);
     }
 }

@@ -1,13 +1,17 @@
-﻿using System;
+﻿using Managers;
+using System;
 using System.Collections.Generic;
 
-public class Reshuma
+namespace Operations
 {
-    public Guid ReshumaGuid;
-    public string CompanyName;
-    public string CompanyField;
-    public string PhoneNumber;
-    public DateTime StartDate;
-    public DateTime EndDate;
-    public List<Call> Calls;
+    [Serializable]
+    public class Reshuma
+    {
+        public int ReshumaGuid { get; set; }
+        public string Company { get; set; }
+        public string Type { get; set; }
+        public string PhoneNumber { get; set; }
+        public List<Call> Calls { get; set; }
+
+    }
 }

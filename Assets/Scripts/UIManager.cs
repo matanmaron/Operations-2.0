@@ -1,13 +1,9 @@
 ﻿using UnityEngine;
 
-public class UIManager : MonoBehaviour
+namespace Managers
 {
-    [SerializeField] Transform content;
-    [SerializeField] GameObject rowPrefab;
-
-    internal void AddNewReshuma(Reshuma row)
+    public class UIManager : MonoBehaviour
     {
-        var obj = Instantiate(rowPrefab, content);
-        obj.GetComponent<Row>().SetInfo(row);
+        [SerializeField] Canvas canvas;
     }
 }

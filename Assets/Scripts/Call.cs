@@ -1,13 +1,14 @@
-﻿
-using System;
+﻿using System;
 
-public class Call
+namespace Operations
 {
-    public Guid CallGuid;
-    public string Representative;
-    public string CallContents;
-    public DateTime CallDate;
-    public string Remarks;
-    public DateTime ContractStartDate;
-    public DateTime ContractEndDate;
+    [Serializable]
+    public class Call
+    {
+        public Guid CallGuid { get; set; }
+        public string Representative { get; set; }
+        public string Contents { get; set; }
+        public DateTime CallDate { get; set; }
+        public DateTime DealEnd { get; set; }
+    }
 }

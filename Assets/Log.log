@@ -1,0 +1,10 @@
+[8/28/2020 4:05:13 PM (UTC)] - [WARNING] - [Settings.cs] - [ImportSettings]:	no settings file found, creating default
+[8/28/2020 4:05:13 PM (UTC)] - [DEBUG] - [Settings.cs] - [ExportSettings]:	settings exported successfully
+[8/28/2020 4:33:27 PM (UTC)] - [WARNING] - [Settings.cs] - [ImportSettings]:	no settings file found, creating default
+[8/28/2020 4:33:27 PM (UTC)] - [DEBUG] - [Settings.cs] - [ExportSettings]:	settings exported successfully
+[8/28/2020 4:35:49 PM (UTC)] - [WARNING] - [Settings.cs] - [ImportSettings]:	no settings file found, creating default
+[8/28/2020 4:35:49 PM (UTC)] - [DEBUG] - [Settings.cs] - [ExportSettings]:	settings exported successfully
+[8/28/2020 4:36:49 PM (UTC)] - [WARNING] - [Settings.cs] - [ImportSettings]:	no settings file found, creating default
+[8/28/2020 4:36:49 PM (UTC)] - [DEBUG] - [Settings.cs] - [ExportSettings]:	settings exported successfully
+[8/28/2020 4:39:51 PM (UTC)] - [WARNING] - [Data.cs] - [ImportData]:	no data file found, creating default
+[8/28/2020 4:39:51 PM (UTC)] - [DEBUG] - [Data.cs] - [ExportData]:	data exported successfully
