@@ -10,7 +10,7 @@ namespace Managers
     public static class LogManager
     {
         private const string FileName = "Log.log";
-        public static void Log(string str, EnumLog enumLog = EnumLog.DEBUG, [CallerFilePath] string className = "", [CallerMemberName] string functionName = "")
+        public static void Log(string str, Enums.LogType enumLog = Enums.LogType.DEBUG, [CallerFilePath] string className = "", [CallerMemberName] string functionName = "")
         {
             StringBuilder output = new StringBuilder();
             output.Append("[");
@@ -28,13 +28,13 @@ namespace Managers
             {
                 switch (enumLog)
                 {
-                    case EnumLog.WARNING:
+                    case Enums.LogType.WARNING:
                         Debug.LogWarning(output.ToString());
                         break;
-                    case EnumLog.ERROR:
+                    case Enums.LogType.ERROR:
                         Debug.LogError(output.ToString());
                         break;
-                    case EnumLog.DEBUG:
+                    case Enums.LogType.DEBUG:
                     default:
                         Debug.Log(output.ToString());
                         break;

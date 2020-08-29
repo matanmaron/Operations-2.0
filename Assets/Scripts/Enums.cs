@@ -1,6 +1,6 @@
 ﻿namespace Enums
 {
-    public enum EnumLog
+    public enum LogType
     {
         DEBUG,
         WARNING,

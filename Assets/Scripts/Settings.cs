@@ -36,13 +36,13 @@ namespace Managers
         {
             if (!File.Exists($"{Application.dataPath}/{FileName}"))
             {
-                LogManager.Log("no settings file found, creating default", EnumLog.WARNING);
+                LogManager.Log("no settings file found, creating default", Enums.LogType.WARNING);
                 return null;
             }
             string jsonImport = File.ReadAllText($"{Application.dataPath}/{FileName}");
             if (jsonImport == "{}")
             {
-                LogManager.Log("settings file empty, creating default", EnumLog.WARNING);
+                LogManager.Log("settings file empty, creating default", Enums.LogType.WARNING);
                 return null;
             }
             return JsonUtility.FromJson<Settings>(jsonImport);
@@ -52,7 +52,7 @@ namespace Managers
         {
             string jsonExport = JsonUtility.ToJson(settings);
             File.WriteAllText($"{Application.dataPath}/{FileName}", jsonExport);
-            LogManager.Log("settings exported successfully", EnumLog.DEBUG);
+            LogManager.Log("settings exported successfully", Enums.LogType.DEBUG);
         }
 
         internal static void Export(Settings settings)

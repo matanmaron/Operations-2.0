@@ -1,14 +1,21 @@
-﻿using System;
+﻿using Json;
+using System;
+using System.Runtime.Serialization;
 
 namespace Operations
 {
     [Serializable]
     public class Call
     {
-        public Guid CallGuid { get; set; }
-        public string Representative { get; set; }
-        public string Contents { get; set; }
-        public DateTime CallDate { get; set; }
-        public DateTime DealEnd { get; set; }
+        public SerializableGuid CallGuid = Guid.NewGuid();
+        public string Representative;
+        public string Contents;
+        public DateTime CallDate;
+        public DateTime DealEnd;
+
+        public override string ToString()
+        {
+            return $"{Representative} | {Contents} | {CallDate} | {DealEnd}";
+        }
     }
 }

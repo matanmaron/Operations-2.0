@@ -27,6 +27,12 @@ namespace Managers
         {
             settings = SettingsManager.GetSettings();
             data = DataManager.GetData();
+            uiManager.RefreshUI();
+        }
+
+        internal void OnExit()
+        {
+            DataManager.Export(data);
         }
     }
 }
