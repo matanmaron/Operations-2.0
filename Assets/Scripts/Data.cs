@@ -1,15 +1,13 @@
-﻿using Enums;
-using Managers;
+﻿using Operations.Core;
+using Operations.Managers;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization;
 using UnityEngine;
 using LogType = Enums.LogType;
 
-namespace Operations
+namespace Operations.Data
 {
     [Serializable]
     public class Data
@@ -24,6 +22,14 @@ namespace Operations
             return resh;
         }
 
+        public Call AddNewCall()
+        {
+            var call = new Call();
+            GameManager.Instance.GetCurrentReshuma().Calls.Add(call);
+            return call;
+        }
+        
+
         public void RemoveReshuma(Guid guid)
         {
             var resh = reshumas.FirstOrDefault(x => x.ReshumaGuid == guid);
@@ -34,6 +40,19 @@ namespace Operations
             else
             {
                 LogManager.Log($"Cannot find reshuma {guid}", LogType.ERROR);
+            }
+        }
+
+        public void RemoveCall(Reshuma resh, Guid callGuid)
+        {
+            var call = resh.Calls.FirstOrDefault(x => x.CallGuid == callGuid);
+            if (call != null)
+            {
+                call.IsDeleted = true;
+            }
+            else
+            {
+                LogManager.Log($"Cannot find call {callGuid}", LogType.ERROR);
             }
         }
     }

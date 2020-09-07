@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using UnityEngine;
 
-namespace Managers
+namespace Operations.Managers
 {
     public static class LogManager
     {

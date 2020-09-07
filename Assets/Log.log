@@ -50,3 +50,26 @@
 [8/29/2020 9:02:47 AM (UTC)] - [DEBUG] - [Data.cs] - [ExportData]:	data exported successfully
 [8/29/2020 9:03:24 AM (UTC)] - [DEBUG] - [UIManager.cs] - [OnExitBTN]:	Application quitting...
 [8/29/2020 9:03:24 AM (UTC)] - [DEBUG] - [Data.cs] - [ExportData]:	data exported successfully
+[9/6/2020 12:42:33 PM (UTC)] - [DEBUG] - [UIManager.cs] - [OnExitBTN]:	Application quitting...
+[9/6/2020 12:42:33 PM (UTC)] - [DEBUG] - [Data.cs] - [ExportData]:	data exported successfully
+[9/6/2020 12:51:22 PM (UTC)] - [DEBUG] - [Data.cs] - [ExportData]:	data exported successfully
+[9/6/2020 12:51:58 PM (UTC)] - [DEBUG] - [Data.cs] - [ExportData]:	data exported successfully
+[9/6/2020 1:00:48 PM (UTC)] - [DEBUG] - [Data.cs] - [ExportData]:	data exported successfully
+[9/6/2020 1:01:32 PM (UTC)] - [DEBUG] - [Data.cs] - [ExportData]:	data exported successfully
+[9/6/2020 1:03:02 PM (UTC)] - [DEBUG] - [Data.cs] - [ExportData]:	data exported successfully
+[9/6/2020 1:04:20 PM (UTC)] - [DEBUG] - [Data.cs] - [ExportData]:	data exported successfully
+[9/6/2020 1:05:59 PM (UTC)] - [DEBUG] - [Data.cs] - [ExportData]:	data exported successfully
+[9/6/2020 3:38:37 PM (UTC)] - [DEBUG] - [Data.cs] - [ExportData]:	data exported successfully
+[9/6/2020 3:39:39 PM (UTC)] - [DEBUG] - [Data.cs] - [ExportData]:	data exported successfully
+[9/6/2020 3:47:07 PM (UTC)] - [DEBUG] - [UIManager.cs] - [OnExitBTN]:	Application quitting...
+[9/6/2020 3:47:08 PM (UTC)] - [DEBUG] - [Data.cs] - [ExportData]:	data exported successfully
+[9/6/2020 3:49:59 PM (UTC)] - [DEBUG] - [Data.cs] - [ExportData]:	data exported successfully
+[9/6/2020 6:04:17 PM (UTC)] - [WARNING] - [Data.cs] - [ImportData]:	no data file found, creating default
+[9/6/2020 6:04:17 PM (UTC)] - [DEBUG] - [Data.cs] - [ExportData]:	data exported successfully
+[9/6/2020 6:05:12 PM (UTC)] - [DEBUG] - [Data.cs] - [ExportData]:	data exported successfully
+[9/6/2020 6:08:25 PM (UTC)] - [DEBUG] - [Data.cs] - [ExportData]:	data exported successfully
+[9/6/2020 6:09:45 PM (UTC)] - [DEBUG] - [Data.cs] - [ExportData]:	data exported successfully
+[9/6/2020 6:10:01 PM (UTC)] - [DEBUG] - [Data.cs] - [ExportData]:	data exported successfully
+[9/6/2020 6:10:51 PM (UTC)] - [DEBUG] - [Data.cs] - [ExportData]:	data exported successfully
+[9/6/2020 6:11:09 PM (UTC)] - [DEBUG] - [Data.cs] - [ExportData]:	data exported successfully
+[9/6/2020 6:12:32 PM (UTC)] - [DEBUG] - [Data.cs] - [ExportData]:	data exported successfully

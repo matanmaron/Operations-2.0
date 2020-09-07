@@ -1,37 +1,91 @@
-﻿using Operations;
-using System.Collections.Generic;
+﻿using Operations.Core;
+using Operations.UI;
+using System;
+using TMPro;
 using UnityEngine;
 
-namespace Managers
+namespace Operations.Managers
 {
     public class UIManager : MonoBehaviour
     {
         [SerializeField] Canvas canvas = null;
         [SerializeField] GameObject RowPrefab = null;
+        [SerializeField] GameObject CallPrefab = null;
         [SerializeField] Transform Content = null;
+        [SerializeField] GameObject NewReshumaPanel = null;
+        [SerializeField] GameObject NewCallPanel = null;
+        [SerializeField] TextMeshProUGUI AddTMP = null;
+        [SerializeField] TextMeshProUGUI ExitTMP = null;
+
+        private const string ADD_RESHUMA = "הוסף חברה";
+        private const string ADD_CALL = "הוסף שיחה";
+        private const string EXIT = "יציאה";
+        private const string BACK = "חזרה";
+
+        private bool isCallScreen = false;
+
+        private void Start()
+        {
+            NewReshumaPanel.SetActive(false);
+            NewCallPanel.SetActive(false);
+        }
 
         public void OnAddBTN()
         {
-            var row = Instantiate(RowPrefab, Content);
-            var resh = GameManager.Instance.data.AddNewReshuma();
-            row.GetComponent<Row>().Init(resh);
+            if (isCallScreen)
+            {
+                var row = Instantiate(CallPrefab, Content);
+                var call = GameManager.Instance.data.AddNewCall();
+                row.GetComponent<RowCall>().Init(call);
+            }
+            else
+            {
+                var row = Instantiate(RowPrefab, Content);
+                var resh = GameManager.Instance.data.AddNewReshuma();
+                row.GetComponent<Row>().Init(resh);
+            }
+        }
+
+        internal void ChangeToReshumas()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void ChangeToCalls()
+        {
+            RefreshCallsUI();
         }
 
         public void OnExitBTN()
         {
-            LogManager.Log("Application quitting...");
-            GameManager.Instance.OnExit();
-            Application.Quit();
+            if (isCallScreen)
+            {
+                RefreshReshumasUI();
+            }
+            else
+            {
+                LogManager.Log("Application quitting...");
+                Application.Quit();
+            }
         }
 
-        public void LoadRow(Reshuma resh)
+        private void LoadReshumaRow(Reshuma resh)
         {
             var row = Instantiate(RowPrefab, Content);
             row.GetComponent<Row>().Init(resh);
         }
 
-        public void RefreshUI()
+        private void LoadCallRow(Call call)
         {
+            var row = Instantiate(CallPrefab, Content);
+            row.GetComponent<RowCall>().Init(call);
+        }
+
+        internal void RefreshReshumasUI()
+        {
+            AddTMP.text = ADD_RESHUMA;
+            ExitTMP.text = EXIT;
+            isCallScreen = false;
             foreach (Transform child in Content)
             {
                 Destroy(child.gameObject);
@@ -40,9 +94,43 @@ namespace Managers
             {
                 if (!resh.IsDeleted)
                 {
-                    LoadRow(resh);
+                    LoadReshumaRow(resh);
                 }
             }
+        }
+
+        internal void RefreshCallsUI()
+        {
+            AddTMP.text = ADD_CALL;
+            ExitTMP.text = BACK;
+            isCallScreen = true;
+            var resh = GameManager.Instance.GetCurrentReshuma();
+            if (resh == null)
+            {
+                LogManager.Log("Cannot find selected reshuma", Enums.LogType.ERROR);
+                return;
+            }
+            foreach (Transform child in Content)
+            {
+                Destroy(child.gameObject);
+            }
+            foreach (Call call in resh.Calls)
+            {
+                if (!call.IsDeleted)
+                {
+                    LoadCallRow(call);
+                }
+            }
+        }
+
+        internal void ShowCallEdit()
+        {
+            NewCallPanel.SetActive(true);
+        }
+
+        internal void ShowReshumaEdit()
+        {
+            NewReshumaPanel.SetActive(true);
         }
     }
 }

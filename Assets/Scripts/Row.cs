@@ -1,11 +1,9 @@
-﻿using Managers;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Operations.Core;
+using Operations.Managers;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace Operations
+namespace Operations.UI
 {
     public class Row : MonoBehaviour
     {
@@ -15,7 +13,6 @@ namespace Operations
         public void Init(Reshuma _resh)
         {
             resh = _resh;
-            resh.Company = resh.ReshumaGuid.ToString();
             text.text = resh.ToString();
         }
 
@@ -27,7 +24,14 @@ namespace Operations
 
         public void OnEdit()
         {
-
+            GameManager.Instance.ShowReshumanEdit(resh);
         }
+
+        public void OnReshumaBTN()
+        {
+            GameManager.Instance.SetSelectedReshuma(resh);
+            GameManager.Instance.uiManager.ChangeToCalls();
+    }
+
     }
 }

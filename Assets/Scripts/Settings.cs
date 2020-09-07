@@ -3,7 +3,7 @@ using System;
 using System.IO;
 using UnityEngine;
 
-namespace Managers
+namespace Operations.Managers
 {
     [Serializable]
     public class Settings

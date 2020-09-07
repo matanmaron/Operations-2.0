@@ -2,7 +2,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace Operations
+namespace Operations.Core
 {
     [Serializable]
     public class Call
@@ -12,6 +12,7 @@ namespace Operations
         public string Contents;
         public DateTime CallDate;
         public DateTime DealEnd;
+        public bool IsDeleted;
 
         public override string ToString()
         {

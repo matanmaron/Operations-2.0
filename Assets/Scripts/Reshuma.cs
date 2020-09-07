@@ -1,10 +1,10 @@
 ﻿using Json;
-using Managers;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 
-namespace Operations
+namespace Operations.Core
 {
     [Serializable]
     [DataContract]
@@ -19,7 +19,7 @@ namespace Operations
 
         public override string ToString()
         {
-            return $"{Company} | {Type} | {PhoneNumber}";
+            return $"{Company} | {Type} | {PhoneNumber.ToString().Reverse()}";
         }
     }
 }
