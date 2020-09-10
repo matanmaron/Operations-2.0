@@ -1,5 +1,4 @@
-﻿using Enums;
-using System;
+﻿using System;
 using System.IO;
 using UnityEngine;
 
@@ -36,13 +35,13 @@ namespace Operations.Managers
         {
             if (!File.Exists($"{Application.dataPath}/{FileName}"))
             {
-                LogManager.Log("no settings file found, creating default", Enums.LogType.WARNING);
+                LogManager.Log("no settings file found, creating default", LogType.Warning);
                 return null;
             }
             string jsonImport = File.ReadAllText($"{Application.dataPath}/{FileName}");
             if (jsonImport == "{}")
             {
-                LogManager.Log("settings file empty, creating default", Enums.LogType.WARNING);
+                LogManager.Log("settings file empty, creating default", LogType.Warning);
                 return null;
             }
             return JsonUtility.FromJson<Settings>(jsonImport);
@@ -52,7 +51,7 @@ namespace Operations.Managers
         {
             string jsonExport = JsonUtility.ToJson(settings);
             File.WriteAllText($"{Application.dataPath}/{FileName}", jsonExport);
-            LogManager.Log("settings exported successfully", Enums.LogType.DEBUG);
+            LogManager.Log("settings exported successfully", LogType.Log);
         }
 
         internal static void Export(Settings settings)

@@ -11,15 +11,15 @@ namespace Operations.Core
     public class Reshuma
     {
         public SerializableGuid ReshumaGuid = Guid.NewGuid();
-        public string Company;
-        public string Type;
-        public string PhoneNumber;
-        public List<Call> Calls;
-        public bool IsDeleted;
+        public string Company = string.Empty;
+        public string Type = string.Empty;
+        public string PhoneNumber = string.Empty;
+        public List<Call> Calls = new List<Call>();
+        public bool IsDeleted = false;
 
         public override string ToString()
         {
-            return $"{Company} | {Type} | {PhoneNumber.ToString().Reverse()}";
+            return $"{Company} | {Type} | {PhoneNumber.StringReverse()}";
         }
     }
 }

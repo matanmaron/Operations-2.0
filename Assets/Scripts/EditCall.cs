@@ -21,7 +21,7 @@ namespace Operations.UI
             call = GameManager.Instance.GetCurrentCall();
             if (call == null)
             {
-                LogManager.Log("cannot find call", Enums.LogType.ERROR);
+                LogManager.Log("cannot find call", LogType.Error);
             }
             RepresentativeTMP.text = call.Representative;
             ContentsTMP.text = call.Contents;

@@ -19,7 +19,7 @@ namespace Operations.UI
             resh = GameManager.Instance.GetCurrentReshuma();
             if (resh == null)
             {
-                LogManager.Log("cannot find reshuma", Enums.LogType.ERROR);
+                LogManager.Log("cannot find reshuma", LogType.Error);
             }
             companyTMP.text = resh.Company;
             typeTMP.text = resh.Type;

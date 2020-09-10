@@ -1,5 +1,4 @@
-﻿using Enums;
-using System;
+﻿using System;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -10,7 +9,7 @@ namespace Operations.Managers
     public static class LogManager
     {
         private const string FileName = "Log.log";
-        public static void Log(string str, Enums.LogType enumLog = Enums.LogType.DEBUG, [CallerFilePath] string className = "", [CallerMemberName] string functionName = "")
+        public static void Log(string str, LogType enumLog = LogType.Log, [CallerFilePath] string className = "", [CallerMemberName] string functionName = "")
         {
             StringBuilder output = new StringBuilder();
             output.Append("[");
@@ -28,13 +27,13 @@ namespace Operations.Managers
             {
                 switch (enumLog)
                 {
-                    case Enums.LogType.WARNING:
+                    case LogType.Warning:
                         Debug.LogWarning(output.ToString());
                         break;
-                    case Enums.LogType.ERROR:
+                    case LogType.Error:
                         Debug.LogError(output.ToString());
                         break;
-                    case Enums.LogType.DEBUG:
+                    case LogType.Log:
                     default:
                         Debug.Log(output.ToString());
                         break;

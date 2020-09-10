@@ -107,7 +107,7 @@ namespace Operations.Managers
             var resh = GameManager.Instance.GetCurrentReshuma();
             if (resh == null)
             {
-                LogManager.Log("Cannot find selected reshuma", Enums.LogType.ERROR);
+                LogManager.Log("Cannot find selected reshuma", LogType.Error);
                 return;
             }
             foreach (Transform child in Content)
