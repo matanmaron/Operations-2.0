@@ -1,6 +1,5 @@
 ﻿using Json;
 using System;
-using System.Runtime.Serialization;
 
 namespace Operations.Core
 {
@@ -10,18 +9,18 @@ namespace Operations.Core
         public SerializableGuid CallGuid = Guid.NewGuid();
         public string Representative = string.Empty;
         public string Contents = string.Empty;
-        public DateTime CallDate = DateTime.Now;
-        public DateTime DealEnd = DateTime.Now;
+        public long CallDateTicks = DateTime.Now.Ticks;
+        public long DealEndTicks = DateTime.Now.Ticks;
         public bool IsDeleted = false;
-
+        
         public Call()
         {
-            DealEnd = DealEnd.AddYears(1);
+            DealEndTicks = new DateTime(DealEndTicks).AddYears(1).Ticks;
         }
 
         public override string ToString()
         {
-            return $"{Representative} | {Contents} | {CallDate.ToShortDateString().StringReverse()} | {DealEnd.ToShortDateString().StringReverse()}";
+            return $"{Representative} | {Contents} | {new DateTime(DealEndTicks).ToShortDateString().StringReverse()} | {new DateTime(CallDateTicks).ToShortDateString().StringReverse()}";
         }
     }
 }

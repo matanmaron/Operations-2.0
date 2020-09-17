@@ -14,10 +14,13 @@ namespace Operations.UI
         [SerializeField] TMP_InputField ContentsTMP = null;
         [SerializeField] TMP_InputField callDateTMP = null;
         [SerializeField] TMP_InputField dealEndTMP = null;
-
+        [SerializeField] TextMeshProUGUI errorMassage = null;
         private Call call = null;
+        private bool error = false;
+
         private void OnEnable()
         {
+            errorMassage.text = string.Empty;
             call = GameManager.Instance.GetCurrentCall();
             if (call == null)
             {
@@ -25,16 +28,20 @@ namespace Operations.UI
             }
             RepresentativeTMP.text = call.Representative;
             ContentsTMP.text = call.Contents;
-            callDateTMP.text = call.CallDate.ToShortDateString();
-            dealEndTMP.text = call.DealEnd.ToShortDateString();
+            callDateTMP.text = new DateTime(call.CallDateTicks).ToShortDateString();
+            dealEndTMP.text = new DateTime(call.DealEndTicks).ToShortDateString();
         }
 
         public void OnOkBTN()
         {
             call.Representative = RepresentativeTMP.text;
             call.Contents = ContentsTMP.text;
-            call.CallDate = TryPharseDate(callDateTMP.text);
-            call.DealEnd = TryPharseDate(dealEndTMP.text);
+            call.CallDateTicks = TryPharseDate(callDateTMP.text).Ticks;
+            call.DealEndTicks = TryPharseDate(dealEndTMP.text).Ticks;
+            if (error)
+            {
+                return;
+            }
             gameObject.SetActive(false);
             GameManager.Instance.uiManager.RefreshCallsUI();
         }
@@ -44,10 +51,19 @@ namespace Operations.UI
             DateTime res;
             if (DateTime.TryParse(date, out res))
             {
+                error = false;
+                errorMassage.text = string.Empty;
+                ShowError($"תאריך {date} לא תקין");
                 return res;
             }
+            error = true;
             LogManager.Log($"error pharsing date: {date}");
             return DateTime.Now;
+        }
+
+        private void ShowError(string ex)
+        {
+                errorMassage.text = ex;
         }
     }
 }

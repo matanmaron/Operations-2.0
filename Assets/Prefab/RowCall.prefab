@@ -393,7 +393,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8365193471834061872}
         m_MethodName: OnEdit
         m_Mode: 1
         m_Arguments:
