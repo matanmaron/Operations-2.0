@@ -24,6 +24,7 @@ namespace Operations.Data
         {
             var call = new Call();
             GameManager.Instance.GetCurrentReshuma().Calls.Add(call);
+            GameManager.Instance.GetCurrentReshuma().Calls.OrderBy(x => x.DealEndTicks);
             return call;
         }
         
