@@ -9,10 +9,11 @@ namespace Operations.Managers
     {
         public bool ShowDebug = false;
         public bool SaveDebug = false;
+        public string Path = string.Empty;
 
         public override string ToString()
         {
-            return $"ShowDebug:{ShowDebug} | SaveDebug:{SaveDebug}";
+            return $"Path:{Path} | ShowDebug:{ShowDebug} | SaveDebug:{SaveDebug}";
         }
     }
 
@@ -54,7 +55,7 @@ namespace Operations.Managers
             LogManager.Log("settings exported successfully", LogType.Log);
         }
 
-        internal static void Export(Settings settings)
+        internal static void Save(Settings settings)
         {
             ExportSettings(settings);
         }

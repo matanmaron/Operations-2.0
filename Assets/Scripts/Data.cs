@@ -12,7 +12,6 @@ namespace Operations.Data
     public class Data
     {
         public List<Reshuma> reshumas = new List<Reshuma>();
-
         public Reshuma AddNewReshuma()
         {
             var resh = new Reshuma();
@@ -58,7 +57,9 @@ namespace Operations.Data
 
     public static class DataManager
     {
-        private const string FileName = "data.json";
+        private const string FileName = "OperationData.json";
+        public static string PATH = $"{Application.dataPath}";
+
         public static Data GetData()
         {
             Data data = ImportData();
@@ -73,12 +74,12 @@ namespace Operations.Data
 
         static Data ImportData()
         {
-            if (!File.Exists($"{Application.dataPath}/{FileName}"))
+            if (!File.Exists($"{PATH}/{FileName}"))
             {
                 LogManager.Log("no data file found, creating default", LogType.Warning);
                 return null;
             }
-            string jsonImport = File.ReadAllText($"{Application.dataPath}/{FileName}");
+            string jsonImport = File.ReadAllText($"{PATH}/{FileName}");
             if (jsonImport == "{}")
             {
                 LogManager.Log("data file empty, creating default", LogType.Warning);
@@ -90,7 +91,7 @@ namespace Operations.Data
         static void ExportData(Data data)
         {
             string jsonExport = JsonUtility.ToJson(data);
-            File.WriteAllText($"{Application.dataPath}/{FileName}", jsonExport);
+            File.WriteAllText($"{PATH}/{FileName}", jsonExport);
             LogManager.Log("data exported successfully", LogType.Log);
         }
 

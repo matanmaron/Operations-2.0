@@ -1,5 +1,6 @@
 ﻿using Operations.Core;
 using Operations.UI;
+using SFB;
 using System;
 using TMPro;
 using UnityEngine;
@@ -14,6 +15,7 @@ namespace Operations.Managers
         [SerializeField] Transform Content = null;
         [SerializeField] GameObject NewReshumaPanel = null;
         [SerializeField] GameObject NewCallPanel = null;
+        [SerializeField] GameObject DataPathPanel = null;
         [SerializeField] TextMeshProUGUI AddTMP = null;
         [SerializeField] TextMeshProUGUI ExitTMP = null;
 
@@ -24,10 +26,11 @@ namespace Operations.Managers
 
         private bool isCallScreen = false;
 
-        private void Start()
+        private void Awake()
         {
             NewReshumaPanel.SetActive(false);
             NewCallPanel.SetActive(false);
+            DataPathPanel.SetActive(false);
         }
 
         public void OnAddBTN()
@@ -44,6 +47,19 @@ namespace Operations.Managers
                 var resh = GameManager.Instance.data.AddNewReshuma();
                 row.GetComponent<Row>().Init(resh);
             }
+        }
+
+        internal void ShowDataFilePath()
+        {
+            DataPathPanel.SetActive(true);
+        }
+
+        public void OnShowDataFilePath()
+        {
+            DataPathPanel.SetActive(false);
+            var paths = StandaloneFileBrowser.OpenFolderPanel("Select Data Folder", string.Empty, false);
+            GameManager.Instance.SetPath(paths[0]);
+            GameManager.Instance.LoadApp();
         }
 
         internal void ChangeToReshumas()

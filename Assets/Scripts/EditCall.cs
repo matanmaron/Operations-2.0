@@ -34,6 +34,7 @@ namespace Operations.UI
 
         public void OnOkBTN()
         {
+            errorMassage.text = string.Empty;
             call.Representative = RepresentativeTMP.text;
             call.Contents = ContentsTMP.text;
             call.CallDateTicks = TryPharseDate(callDateTMP.text).Ticks;
@@ -52,10 +53,10 @@ namespace Operations.UI
             if (DateTime.TryParse(date, out res))
             {
                 error = false;
-                errorMassage.text = string.Empty;
-                ShowError($"תאריך {date} לא תקין");
+                
                 return res;
             }
+            ShowError($"תאריך {date} לא תקין");
             error = true;
             LogManager.Log($"error pharsing date: {date}");
             return DateTime.Now;
@@ -63,7 +64,7 @@ namespace Operations.UI
 
         private void ShowError(string ex)
         {
-                errorMassage.text = ex;
+            errorMassage.text = errorMassage.text + Environment.NewLine + ex;
         }
     }
 }

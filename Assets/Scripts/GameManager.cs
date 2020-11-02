@@ -35,8 +35,23 @@ namespace Operations.Managers
         private void Start()
         {
             settings = SettingsManager.GetSettings();
+            if (settings.Path == string.Empty)
+            {
+                uiManager.ShowDataFilePath();
+            }
+            else
+            {
+                LoadApp();
+            }
+
+        }
+
+        internal void LoadApp()
+        {
+            SetPath(settings.Path);
             data = DataManager.GetData();
             uiManager.RefreshReshumasUI();
+            SettingsManager.Save(settings);
         }
 
         internal void SetSelectedReshuma(Reshuma resh)
@@ -59,6 +74,20 @@ namespace Operations.Managers
         internal Call GetCurrentCall()
         {
             return SelectedCall;
+        }
+
+        internal void SetPath(string val)
+        {
+            if (val == string.Empty)
+            {
+                LogManager.Log("path is empty. reverting to default",LogType.Warning);
+                val = DataManager.PATH;
+            }
+            if (settings.Path != val)
+            {
+                settings.Path = val;
+            }
+            DataManager.PATH = val;
         }
 
         internal Reshuma GetCurrentReshuma()
